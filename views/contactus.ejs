@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html>
+    <head>
+      <title>Contact us Page of 7waves for our Clients.</title>
+
+        <meta charset="utf-8">
+        <head>
+          <meta name="description" content="This is a page for Our clients regarding the Contact us of 7waves">
+          <meta name="keywords" content="MOTIVATION,DEPRESSION,INTROSPECTION,CAREER CONSULTANT,BUSINESS ADVISOR,PERSONAL,RELATIONSHIP,CONSULTANT,GROWTH,SELF GROWTH,LIFE COACH,COACH CONSUNSULTANCY">
+          <meta name="author" content="7 WAVES">
+        </head>
+
+      <%- include("./partials/navbar")  %>
+
+        <div style="padding-top: 5px;"></div>
+   <!-- contact us form  starts-->
+    <section class="Contactu"><br>
+        <div class="container headings ">
+            <h1 class="text-center font-weight-bold ">
+                Contact Us
+            </h1><br>
+            <!-- <p class="text-capitalize pt-1 text-center">We at 7 Waves are here to help and answer any question you might have. We look forward to hear from you.</p> -->
+            <div class="container">
+                <div class="row">
+                    <div class="col-lg-8 col-md-8 col-10 offset-lg-2 offset-md-2 offset-1">
+                        <form >
+                            <div class="form-group">
+
+                              <input type="text" class="form-control" placeholder="Enter Subject" id="subject" required >
+                            </div>
+                            <div class="form-group">
+
+                              <input type="email" class="form-control" placeholder="Enter email" id="email" required >
+                            </div>
+                              <textarea type="text" class="form-control" placeholder="Enter comment" rows="6" id="text" required ></textarea><br>
+                              <div class="d-flex justify-content-center form-button">
+                            <button type="submit" class="btn btn-primary">Submit</button>
+                        </div>
+                          </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+     </section>
+     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+     <script>
+       $("form").on("submit", e => {
+         e.preventDefault();
+
+         const email = $("#email")
+           .val()
+           .trim();
+         const subject = $("#subject")
+           .val()
+           .trim();
+         const text = $("#text")
+           .val()
+           .trim();
+
+         const data = {
+           email,
+           subject,
+           text
+         };
+
+         $.post("/email", data)
+           .then(() => {
+             window.location.href = "/";
+           })
+           .catch(() => {
+             window.location.href = "/";
+           });
+       });
+     </script>
+
+    <!-- contact us form  ends-->
+    <%- include("./partials/footer")  %>
